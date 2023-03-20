@@ -1,24 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import CalcProvider from './context/CalcContext';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import CalcPage from './pages/calcPage';
+import HistoryPage from './pages/historyPage';
 
-function App() {
+function App () {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CalcProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<CalcPage />} />
+          <Route exact path={'/history'} element={<HistoryPage />} />
+        </Routes>
+      </Router>
+    </CalcProvider>
   );
 }
 
